@@ -30,7 +30,9 @@ document.addEventListener("contextmenu", (event) => {
  * The user pressed a key on the keyboard 
  */
 function keypress(event) {
-
+  if (event.keyCode == KEYS.SPACE) {
+    HERO.jump()
+  }
 }
 
 
@@ -55,6 +57,7 @@ function update() {
   CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
   
   // Draw our hero
+  //HERO.position.x +=1
   HERO.update();
   
 }
