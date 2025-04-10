@@ -29,13 +29,19 @@ export default class Player {
   get bottom() { return this.position.y + this.height; }
   get left() { return this.position.x; }
   get top() { return this.position.y; }
+  set bottom(location) { this.position.y = location - this.height;}
+  set right(location) { this.position.x = location - this.width;}
+  set top(location) { this.position.y = location;}
+  set left(location) { this.position.x = location;}
 
   /**
    * Main function to update location, velocity, and image
    */
   update() {
     // Add gravity of the hero
-    this.velocity.y += GRAVITY;
+    if  (this.bottom < FLOOR ) {
+      this.velocity.y += GRAVITY;
+    }
 
     // If we hit the floor, stop falling
     if (this.bottom > FLOOR) {
@@ -52,16 +58,16 @@ export default class Player {
   /**
    * Draw the player on the canvas
    */
-  draw() {
-    CTX.fillStyle = "violet";
+  draw(color) {
+    CTX.fillStyle = color;
     CTX.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
   jump() {
-    this.position.y -= 1;
-    this.position.x += 30;
-
-    this.velocity.y = -20;
+    if (this.bottom >= FLOOR) {
+      this.bottom = FLOOR
+      this.velocity.y = -22;
+    }
 
   }
 }

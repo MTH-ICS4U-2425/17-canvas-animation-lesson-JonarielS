@@ -13,7 +13,29 @@ import Player from "./player.js";
 import { CANVAS, CTX, MS_PER_FRAME, KEYS } from "./globals.js";
 
 // Globals
-const HERO = new Player(20, 50, 48, 48);
+const HERO = new Player(50, 50, 48, 48);
+let ground = new Image();
+ground.src = "../images/dino_large.png"
+ground.x_pos = 0;
+ground.x2_pos = 2300;
+
+//Randomizer
+function randInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// Colours
+//Color Random
+function get_rgb_string() {
+  let r = randInt(0, 255)
+  let g = randInt(0, 255)
+  let b = randInt(0, 255)
+
+  return `rgb(${r}, ${g}, ${b})`
+}
+
 
 let frame_time = performance.now()
 
@@ -55,7 +77,30 @@ function update() {
   
   // Clear the canvas
   CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-  
+
+  // Draw the ground
+
+  // drawImage(image file, source x, source y, source width, source height, 
+  // direction x, direction y, direction width, direction height)
+  //Image 1
+  CTX.drawImage(ground, 0, 102, 2300, 26, ground.x_pos, 300, 2300, 28)
+  //Image 2
+  CTX.drawImage(ground, 0, 102, 2300, 26, ground.x2_pos, 300, 2300, 28)
+  ground.x_pos-=10;
+  ground.x2_pos-=10;
+  //console.log(ground.x_pos)
+
+  if(ground.x_pos < -2298) {
+    ground.x_pos = 2298
+  }
+  else if(ground.x2_pos < -2298) {
+    ground.x2_pos = 2298
+  }
+
+
+
+  HERO.draw(get_rgb_string());
+
   // Draw our hero
   //HERO.position.x +=1
   HERO.update();
