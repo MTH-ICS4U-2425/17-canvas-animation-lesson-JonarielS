@@ -10,6 +10,9 @@
 
 import { CTX, CANVAS, GRAVITY, FLOOR } from "./globals.js"
 
+let dino = new Image();
+dino.src = "../images/dino_large.png"
+
 export default class Player {
   constructor(x, y, width, height) {
     this.width = width;
@@ -39,14 +42,21 @@ export default class Player {
    */
   update() {
     // Add gravity of the hero
-    if  (this.bottom < FLOOR ) {
-      this.velocity.y += GRAVITY;
-    }
+    // if  (this.bottom < FLOOR ) {
+    //   this.velocity.y += GRAVITY;
+    // }
 
-    // If we hit the floor, stop falling
-    if (this.bottom > FLOOR) {
+    // // If we hit the floor, stop falling
+    // if (this.bottom > FLOOR) {
+    //   this.velocity.y = 0;
+    //   this.position.y = FLOOR - this.height;
+    // }
+
+    if (this.bottom + this.velocity.y >= FLOOR) {
       this.velocity.y = 0;
-      this.position.y = FLOOR - this.height;
+      this.bottom = FLOOR;
+    } else {
+      this.velocity.y += GRAVITY;
     }
 
     // Update the location of the hero
@@ -59,14 +69,19 @@ export default class Player {
    * Draw the player on the canvas
    */
   draw(color) {
-    CTX.fillStyle = color;
-    CTX.fillRect(this.position.x, this.position.y, this.width, this.height);
+    //CTX.fillStyle = "violet";
+    CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.667, 62.667)
+
+    //CTX.drawImage(dino, 1854, 2, 87, 94, this.position.x, this.position.y-10, 58.6666666667, 62.6666666667)
+    //CTX.drawImage(dino, 1942, 2, 88, 94, this.position.x, this.position.y-10, 58.6666666667, 62.6666666667)
+
+
   }
 
   jump() {
     if (this.bottom >= FLOOR) {
       this.bottom = FLOOR
-      this.velocity.y = -22;
+      this.velocity.y = -25;
     }
 
   }
