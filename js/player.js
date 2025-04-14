@@ -12,6 +12,8 @@ import { CTX, CANVAS, GRAVITY, FLOOR } from "./globals.js"
 
 let dino = new Image();
 dino.src = "../images/dino_large.png"
+let i = 1
+
 
 export default class Player {
   constructor(x, y, width, height) {
@@ -70,19 +72,29 @@ export default class Player {
    */
   draw(color) {
     //CTX.fillStyle = "violet";
-    CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.667, 62.667)
+    //CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
 
-    //CTX.drawImage(dino, 1854, 2, 87, 94, this.position.x, this.position.y-10, 58.6666666667, 62.6666666667)
-    //CTX.drawImage(dino, 1942, 2, 88, 94, this.position.x, this.position.y-10, 58.6666666667, 62.6666666667)
-
-
+    if ( i >= 0 && i < 8 && this.bottom == FLOOR){
+      CTX.drawImage(dino, 1854, 2, 87, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+      i++
+    } else if ( i >= 8 && i < 16 && this.bottom == FLOOR){
+      CTX.drawImage(dino, 1942, 2, 87, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+      i++
+    } else if (i == 16 && this.bottom == FLOOR){
+      CTX.drawImage(dino, 1942, 2, 87, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+      i = 0
+    } else if (this.bottom <= FLOOR) {
+      CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+    }
   }
 
   jump() {
     if (this.bottom >= FLOOR) {
       this.bottom = FLOOR
       this.velocity.y = -25;
+      //CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+      console.log("fugly")
     }
-
   }
+
 }

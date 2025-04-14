@@ -11,6 +11,7 @@
 
 import Player from "./player.js";
 import { CANVAS, CTX, MS_PER_FRAME, KEYS } from "./globals.js";
+import Cactus from "./cactus.js";
 
 // Globals
 const HERO = new Player(120, 50, 48, 48);
@@ -73,6 +74,8 @@ function update() {
   
   const EXCESS_TIME = TIME_PASSED % MS_PER_FRAME
   frame_time = NOW - EXCESS_TIME
+
+  //console.log(EXCESS_TIME)
   /*** END FPS Trap ***/
   
   // Clear the canvas
@@ -101,6 +104,10 @@ function update() {
 
 
   //HERO.draw(get_rgb_string());
+
+  //Cactus Determinator
+  let decider = randInt(1, 50)
+  Cactus.cactus(decider)
 
   // Draw our hero
   //HERO.position.x +=1
