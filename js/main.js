@@ -11,7 +11,6 @@
 
 import Player from "./player.js";
 import { CANVAS, CTX, MS_PER_FRAME, KEYS } from "./globals.js";
-import Cactus from "./cactus.js";
 
 // Globals
 const HERO = new Player(120, 50, 48, 48);
@@ -106,14 +105,25 @@ function update() {
   //HERO.draw(get_rgb_string());
 
   //Cactus Determinator
-  let decider = randInt(1, 50)
-  Cactus.cactus(decider)
+  //let decider = randInt(1, 50)
+
+  HERO.cactus();
 
   // Draw our hero
   //HERO.position.x +=1
+  //console.log(decider)
   HERO.update();
+
+  function splash_screen(){
+    //CTs
+  }
+  
   
 }
+
+//Get ready for splash screen
+//document.addEventListener("keydown, start_game")
+//splash_screen()
 
 // Start the animation
 update()
