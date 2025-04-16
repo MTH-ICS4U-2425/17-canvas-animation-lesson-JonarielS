@@ -15,6 +15,7 @@ import { CANVAS, CTX, MS_PER_FRAME, KEYS } from "./globals.js";
 // Globals
 const HERO = new Player(120, 50, 48, 48);
 let ground = new Image();
+let decider = null
 ground.src = "../images/dino_large.png"
 ground.x_pos = 0;
 ground.x2_pos = 2300;
@@ -105,17 +106,21 @@ function update() {
   //HERO.draw(get_rgb_string());
 
   //Cactus Determinator
-  let decider = randInt(1, 10)
+  //decider = randInt(0, 10)
+  HERO.cactus();
 
-  if (decider == 1){
-    HERO.cactus1();
-  }
 
-  //HERO.cactus();
+
+  //console.log(decider)
+
+  // if (decider == 1){
+  //   HERO.cactus1();
+  // }
+
 
   // Draw our hero
   //HERO.position.x +=1
-  console.log(decider)
+  //console.log(decider)
   HERO.update();
 
   function splash_screen(){

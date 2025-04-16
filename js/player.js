@@ -115,22 +115,6 @@ export default class Player {
   }
 
   cactus(pick) {
-    //this.prick.x = 50
-    // let decider = null
-
-    // while(decider != 1){
-    // decider = randInt(1, 10)
-    // }
-
-    // if (decider == 1){
-
-    //   this.prick.x = 100
-    //   while (this.prick.x > -20){
-    //   CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 50, 35, 70)
-    //   this.prick.x-=1
-    //   }
-
-    // }
 
     //small 1
     CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 250, 35, 70)
@@ -156,25 +140,6 @@ export default class Player {
       this.prick.x = 1100
     }
 }
-
-  cactus1() {
-    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 250, 35, 70)
-
-    this.prick.x-=5
-
-    if (this.prick.x == -100){
-      this.prick.x = 1100
-    }
-
-  }
-
-  spawn1() {
-    this.prick.x = 100
-    while (this.prick.x > -20){
-    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 50, 35, 70)
-    this.prick.x-=1
-    }
-  }
 
 }
 
