@@ -105,13 +105,17 @@ function update() {
   //HERO.draw(get_rgb_string());
 
   //Cactus Determinator
-  //let decider = randInt(1, 50)
+  let decider = randInt(1, 10)
 
-  HERO.cactus();
+  if (decider == 1){
+    HERO.cactus1();
+  }
+
+  //HERO.cactus();
 
   // Draw our hero
   //HERO.position.x +=1
-  //console.log(decider)
+  console.log(decider)
   HERO.update();
 
   function splash_screen(){

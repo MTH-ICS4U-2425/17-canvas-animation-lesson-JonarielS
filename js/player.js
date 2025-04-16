@@ -16,6 +16,12 @@ let cacti = new Image();
 cacti.src = "../images/dino_large.png"
 let i = 1
 
+//Randomizer
+function randInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 
 
@@ -34,7 +40,7 @@ export default class Player {
       y: 0
     }
     this.prick = {
-      x: 0,
+      x: 1100,
       y: 0
     };
   }
@@ -73,9 +79,8 @@ export default class Player {
     // Update the location of the hero
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-    this.draw();
-
     this.prick.x += this.velocity.x;
+    this.draw();
 
   }
 
@@ -109,10 +114,26 @@ export default class Player {
     }
   }
 
-  cactus() {
-    this.prick.x = 50
+  cactus(pick) {
+    //this.prick.x = 50
+    // let decider = null
+
+    // while(decider != 1){
+    // decider = randInt(1, 10)
+    // }
+
+    // if (decider == 1){
+
+    //   this.prick.x = 100
+    //   while (this.prick.x > -20){
+    //   CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 50, 35, 70)
+    //   this.prick.x-=1
+    //   }
+
+    // }
+
     //small 1
-    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 50, 35, 70)
+    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 250, 35, 70)
 
     //small 2
     CTX.drawImage(cacti, 480, 2, 68, 70, 150, 50, 68, 70)
@@ -129,11 +150,32 @@ export default class Player {
     //big 3
     CTX.drawImage(cacti, 802, 2, 150, 100, 650, 50, 150, 100)
 
-    this.prick.x-=1
+    this.prick.x-=5
+
+    if (this.prick.x == -100){
+      this.prick.x = 1100
+    }
 }
 
-  summon(){
+  cactus1() {
+    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 250, 35, 70)
+
+    this.prick.x-=5
+
+    if (this.prick.x == -100){
+      this.prick.x = 1100
+    }
 
   }
 
+  spawn1() {
+    this.prick.x = 100
+    while (this.prick.x > -20){
+    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 50, 35, 70)
+    this.prick.x-=1
+    }
+  }
+
 }
+
+
