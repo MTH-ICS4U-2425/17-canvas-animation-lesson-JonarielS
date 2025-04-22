@@ -75,7 +75,7 @@ function update() {
   const EXCESS_TIME = TIME_PASSED % MS_PER_FRAME
   frame_time = NOW - EXCESS_TIME
 
-  //console.log(EXCESS_TIME)
+  //console.log(frame_time)
   /*** END FPS Trap ***/
   
   // Clear the canvas
@@ -108,6 +108,8 @@ function update() {
   //Cactus Determinator
   //decider = randInt(0, 10)
   HERO.cactus();
+  HERO.cloud();
+
 
 
 

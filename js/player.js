@@ -15,6 +15,12 @@ dino.src = "../images/dino_large.png"
 let cacti = new Image();
 cacti.src = "../images/dino_large.png"
 let i = 1
+let x1 = -1100
+let x2 = -1100
+let x3 = -1100
+let x4 = -1100
+let x5 = -1100
+let x6 = -1100
 
 //Randomizer
 function randInt(min, max) {
@@ -108,36 +114,149 @@ export default class Player {
   jump() {
     if (this.bottom >= FLOOR) {
       this.bottom = FLOOR
-      this.velocity.y = -25;
+      this.velocity.y = -27;
       //CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
       console.log("fugly")
     }
   }
 
-  cactus(pick) {
+  cactus() {
+
+    let r = null
+    let timer = 2
+    
+    while (timer < 600){
+      timer+=0.5
+      if(timer > 599){
+        //console.log(timer)
+        timer == 1
+      }
+      //console.log(timer)
+    }
+
+    if (timer % 15 == 0){
+      r = randInt(0, 600)
+    } 
+
 
     //small 1
-    CTX.drawImage(cacti, 445, 2, 35, 70, this.prick.x, 250, 35, 70)
+    CTX.drawImage(cacti, 445, 2, 35, 70, x1, 280, 23.3333333333, 46.6666666667)
 
     //small 2
-    CTX.drawImage(cacti, 480, 2, 68, 70, 150, 50, 68, 70)
+    CTX.drawImage(cacti, 480, 2, 68, 70, x2, 280, 45.3333333333, 46.6666666667)
 
     //small 3
-    CTX.drawImage(cacti, 548, 2, 102, 70, 250, 50, 102, 70)
+    CTX.drawImage(cacti, 548, 2, 102, 70, x3, 280, 68, 46.6666666667)
 
     //big 1
-    CTX.drawImage(cacti, 652, 2, 50, 100, 350, 50, 50, 100)
+    CTX.drawImage(cacti, 652, 2, 50, 100, x4, 260, 33.3333333333, 66.6666666667)
 
     //big 2
-    CTX.drawImage(cacti, 702, 2, 100, 100, 500, 50, 100, 100)
+    CTX.drawImage(cacti, 702, 2, 100, 100, x5, 260, 66.6666666667, 66.6666666667)
 
     //big 3
-    CTX.drawImage(cacti, 802, 2, 150, 100, 650, 50, 150, 100)
+    CTX.drawImage(cacti, 802, 2, 150, 100, x6, 260, 100, 66.6666666667)
 
-    this.prick.x-=5
 
-    if (this.prick.x == -100){
-      this.prick.x = 1100
+    if (x1 >= -100){
+      x1-=5
+    }
+    if (x2 >= -100){
+      x2-=5
+    }
+    if (x3 >= -100){
+      x3-=5
+    }
+    if (x4 >= -100){
+      x4-=5
+    }
+    if (x5 >= -100){
+      x5-=5
+    }
+    if (x6 >= -200){
+      x6-=5
+    }
+
+    if (r == 1 && x1 <= -99){
+      x1 = 1100
+    }
+    if (r == 2 && x2 <= -99){
+      x2 = 1100
+    }
+    if (r == 3 && x3 <= -99){
+      x3 = 1100
+    }
+    if (r == 4 && x4 <= -99){
+      x4 = 1100
+    }
+    if (r == 5 && x5 <= -99){
+      x5 = 1100
+    }
+    if (r == 6 && x6 <= -199){
+      x6 = 1100
+    }
+}
+
+  cloud() {
+
+    let c = null
+    let timer = 2
+    
+    while (timer < 600){
+      timer+=0.5
+      if(timer > 599){
+        //console.log(timer)
+        timer == 1
+      }
+      //console.log(timer)
+    }
+
+    if (timer % 15 == 0){
+      c = randInt(0, 600)
+    } 
+
+
+    //cloud 1
+    CTX.drawImage(cacti, 165, 2, 92, 27, 50, 180, 92, 27)
+
+    
+
+    if (x1 >= -100){
+      x1-=5
+    }
+    if (x2 >= -100){
+      x2-=5
+    }
+    if (x3 >= -100){
+      x3-=5
+    }
+    if (x4 >= -100){
+      x4-=5
+    }
+    if (x5 >= -100){
+      x5-=5
+    }
+    if (x6 >= -200){
+      x6-=5
+    }
+
+    if (c == 1 && x1 <= -99){
+      x1 = 1100
+    }
+    if (c == 2 && x2 <= -99){
+      x2 = 1100
+    }
+    if (c == 3 && x3 <= -99){
+      x3 = 1100
+    }
+    if (c == 4 && x4 <= -99){
+      x4 = 1100
+    }
+    if (c == 5 && x5 <= -99){
+      x5 = 1100
+    }
+    if (c == 6 && x6 <= -199){
+      x6 = 1100
     }
 }
 
