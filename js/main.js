@@ -43,6 +43,7 @@ let frame_time = performance.now()
 // Event Listeners
 document.addEventListener("keydown", keypress);
 
+
 // Disable the context menu on the entire document
 document.addEventListener("contextmenu", (event) => { 
   event.preventDefault();
@@ -109,6 +110,11 @@ function update() {
   //decider = randInt(0, 10)
   HERO.cactus();
   HERO.cloud();
+  HERO.deathCheck();
+  HERO.update();
+
+  // if (HERO.deathCheck() == true){
+  // }
 
 
 
@@ -123,7 +129,6 @@ function update() {
   // Draw our hero
   //HERO.position.x +=1
   //console.log(decider)
-  HERO.update();
 
   function splash_screen(){
     //CTs
@@ -135,6 +140,22 @@ function update() {
 //Get ready for splash screen
 //document.addEventListener("keydown, start_game")
 //splash_screen()
+// function keypress(event) 
+// if (x = 2){
+// }
+document.addEventListener("keydown", begin);
+let start = 1
+
+// while (start == 1){
+//   CTX.drawImage(ground, 76, 6, 88, 90, 50, 50, 88, 90)
+// }
+
+function begin(event) {
+  if ([KEYS.W, KEYS.UP_ARROW, KEYS.SPACE].includes(event.keyCode)) {
+    update()
+    start++
+  }
+}
 
 // Start the animation
-update()
+//update()

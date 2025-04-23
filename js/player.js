@@ -14,6 +14,7 @@ let dino = new Image();
 dino.src = "../images/dino_large.png"
 let cacti = new Image();
 cacti.src = "../images/dino_large.png"
+let move = 5
 let i = 1
 let x1 = -1100
 let x2 = -1100
@@ -159,22 +160,22 @@ export default class Player {
 
 
     if (x1 >= -100){
-      x1-=5
+      x1-=move
     }
     if (x2 >= -100){
-      x2-=5
+      x2-=move
     }
     if (x3 >= -100){
-      x3-=5
+      x3-=move
     }
     if (x4 >= -100){
-      x4-=5
+      x4-=move
     }
     if (x5 >= -100){
-      x5-=5
+      x5-=move
     }
     if (x6 >= -200){
-      x6-=5
+      x6-=move
     }
 
     if (r == 1 && x1 <= -99){
@@ -259,6 +260,19 @@ export default class Player {
       x6 = 1100
     }
 }
+
+  deathCheck() {
+    if (this.position.x == x1){
+      console.log("death")
+      //this.death()
+      //move = 0
+      //return false
+    } 
+  }
+
+  // death() {
+  //   move = 0
+  // }
 
 }
 
