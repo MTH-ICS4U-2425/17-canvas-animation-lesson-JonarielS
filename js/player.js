@@ -109,6 +109,9 @@ export default class Player {
       i = 0
     } else if (this.bottom <= FLOOR) {
       CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+    } else if (move == -5) {
+      CTX.drawImage(dino, 1677, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+
     }
   }
 
@@ -262,18 +265,48 @@ export default class Player {
 }
 
   deathCheck() {
-    if (this.position.x == x1){
+    console.log(this.position.y)
+    if (x1 >= this.position.x-87 && x1 <= this.position.x && this.position.y >= 260){
       console.log("death")
       //this.death()
-      //move = 0
-      //return false
+      move = -5
+      return false
+    } else if (x2 >= this.position.x-87 && x2 <= this.position.x && this.position.y >= 260){
+      console.log("death")
+      //this.death()
+      move = -5
+      return false
+    }  else if (x3 >= this.position.x-87 && x3 <= this.position.x && this.position.y >= 260){
+      console.log("death")
+      //this.death()
+      move = -5
+      return false
+    }  else if (x4 >= this.position.x-87 && x4 <= this.position.x && this.position.y >= 260){
+      console.log("death")
+      //this.death()
+      move = -5
+      return false
+    }  else if (x5 >= this.position.x-87 && x5 <= this.position.x && this.position.y >= 260){
+      console.log("death")
+      //this.death()
+      move = -5
+      return false
+    }  else if (x6 >= this.position.x-87 && x6 <= this.position.x && this.position.y >= 260){
+      console.log("death")
+      //this.death()
+      move = -5
+      return false
     } 
+    return true
   }
 
   // death() {
   //   move = 0
   // }
 
+  deadBody() {
+    CTX.drawImage(dino, 2030, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+  }
 }
 
 

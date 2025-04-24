@@ -111,10 +111,14 @@ function update() {
   HERO.cactus();
   HERO.cloud();
   HERO.deathCheck();
-  HERO.update();
 
-  // if (HERO.deathCheck() == true){
-  // }
+  if (HERO.deathCheck() == true){
+      HERO.update();
+  } else {
+    HERO.deadBody();
+    ground.x_pos+=5;
+    ground.x2_pos+=5;
+  }
 
 
 

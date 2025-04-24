@@ -1,3 +1,16 @@
+/* @font-face {
+  font-family: Press-Start-2P;
+  src: url('./')
+} */
+
+/* CTX.font = "30px Press-Start-2P"; */
+
+/* canvas {
+  background-color: #202124;
+  border: 2px solid #555555;
+}  */
+
+
 body {
   margin: 0;
   background-color: #555555;
@@ -33,3 +46,4 @@ canvas {
   -webkit-filter: invert(1);
   filter: invert(1);
 }
+
