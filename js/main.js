@@ -15,7 +15,8 @@ import { CANVAS, CTX, MS_PER_FRAME, KEYS } from "./globals.js";
 // Globals
 const HERO = new Player(120, 50, 48, 48);
 let ground = new Image();
-let decider = null
+let score = 0
+let highscore = 0
 ground.src = "../images/dino_large.png"
 ground.x_pos = 0;
 ground.x2_pos = 2300;
@@ -91,8 +92,8 @@ function update() {
   CTX.drawImage(ground, 0, 102, 2300, 26, ground.x_pos, 300, 2300, 28)
   //Image 2
   CTX.drawImage(ground, 0, 102, 2300, 26, ground.x2_pos, 300, 2300, 28)
-  ground.x_pos-=5;
-  ground.x2_pos-=5;
+  ground.x_pos-=10;
+  ground.x2_pos-=10;
   //console.log(ground.x_pos)
 
   if(ground.x_pos < -2298) {
@@ -104,21 +105,34 @@ function update() {
 
 
 
+
+
   //HERO.draw(get_rgb_string());
 
   //Cactus Determinator
-  //decider = randInt(0, 10)
   HERO.cactus();
   HERO.cloud();
   HERO.deathCheck();
 
+  CTX.fillText(score, 1000, 20)
+  //CTX.fillText(highscore, 1000, 50)
+
+  //Death, Restart & Score Count
   if (HERO.deathCheck() == true){
       HERO.update();
-  } else {
+      score++
+  } else if (HERO.deathCheck() == false){
     HERO.deadBody();
-    ground.x_pos+=5;
-    ground.x2_pos+=5;
-  }
+    ground.x_pos+=10;
+    ground.x2_pos+=10;
+    highscore = score
+    score = 0
+    CTX.fillText("Press Enter to play again", 400, 200)
+  } else if (HERO.deadBody() == true){
+    HERO.update();
+   }
+
+
 
 
 
@@ -134,32 +148,27 @@ function update() {
   //HERO.position.x +=1
   //console.log(decider)
 
-  function splash_screen(){
-    //CTs
-  }
+
   
   
 }
 
-//Get ready for splash screen
-//document.addEventListener("keydown, start_game")
-//splash_screen()
-// function keypress(event) 
-// if (x = 2){
-// }
+
 document.addEventListener("keydown", begin);
-let start = 1
 
-// while (start == 1){
-//   CTX.drawImage(ground, 76, 6, 88, 90, 50, 50, 88, 90)
-// }
 
+
+//Game Start
 function begin(event) {
   if ([KEYS.W, KEYS.UP_ARROW, KEYS.SPACE].includes(event.keyCode)) {
     update()
-    start++
   }
 }
+
+// Attempted Splashscreen
+  CTX.font = "30px Press-Start-2P";
+  CTX.fillText("Press Space to Play", 400, 200)
+
 
 // Start the animation
 //update()

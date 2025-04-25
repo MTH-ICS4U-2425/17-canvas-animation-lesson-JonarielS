@@ -8,7 +8,7 @@
  * Author: 
  */
 
-import { CTX, CANVAS, GRAVITY, FLOOR } from "./globals.js"
+import { CTX, CANVAS, GRAVITY, FLOOR, KEYS } from "./globals.js"
 
 let dino = new Image();
 dino.src = "../images/dino_large.png"
@@ -22,6 +22,7 @@ let x3 = -1100
 let x4 = -1100
 let x5 = -1100
 let x6 = -1100
+
 
 //Randomizer
 function randInt(min, max) {
@@ -162,6 +163,7 @@ export default class Player {
     CTX.drawImage(cacti, 802, 2, 150, 100, x6, 260, 100, 66.6666666667)
 
 
+    //Reposition the Cacti
     if (x1 >= -100){
       x1-=move
     }
@@ -265,47 +267,48 @@ export default class Player {
 }
 
   deathCheck() {
-    console.log(this.position.y)
+    console.log(x1)
     if (x1 >= this.position.x-87 && x1 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     } else if (x2 >= this.position.x-87 && x2 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     }  else if (x3 >= this.position.x-87 && x3 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     }  else if (x4 >= this.position.x-87 && x4 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     }  else if (x5 >= this.position.x-87 && x5 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     }  else if (x6 >= this.position.x-87 && x6 <= this.position.x && this.position.y >= 260){
-      console.log("death")
-      //this.death()
       move = -5
       return false
     } 
     return true
   }
 
-  // death() {
-  //   move = 0
-  // }
 
   deadBody() {
     CTX.drawImage(dino, 2030, 2, 88, 94, this.position.x, this.position.y-15, 58.6666666667, 62.6666666667)
+    document.addEventListener("keydown", restart);
+
+    //Restart Everything but Score 
+    //Weird bug where you can kill the catci whenever you want
+    function restart(event) {
+      if ([KEYS.ENTER].includes(event.keyCode)) {
+        x1 = 1100
+        x2 = 1100
+        x3 = 1100
+        x4 = 1100
+        x5 = 1100
+        x6 = 1100
+        move = 5
+        return true
+      }
+    }
   }
 }
 

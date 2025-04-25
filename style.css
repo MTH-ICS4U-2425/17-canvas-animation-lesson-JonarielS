@@ -1,14 +1,18 @@
-/* @font-face {
+@font-face {
   font-family: Press-Start-2P;
-  src: url('./')
+  src: url('./Press_Start_2P.zip')
 } */
 
-/* CTX.font = "30px Press-Start-2P"; */
+/* div {
+  font-family: Press-Start-2P;
+} */
 
-/* canvas {
+ /* CTX.font = "30px Press-Start-2P";  */
+
+ canvas {
   background-color: #202124;
   border: 2px solid #555555;
-}  */
+} 
 
 
 body {
@@ -30,7 +34,7 @@ body {
 }
 
 canvas {
-  background-color: #202124;
+  background-color: #9e94be;
   border: 2px solid #333333;
 }
 
